@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>LAB2</title>
+
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+	integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+	crossorigin=""/>
+	
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+	   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+	   crossorigin=""></script>
+	   
+	</head>
+	
+    <body>
+		<div id="mymap" style="height: 800px"></div>
+		
+		<script type="text/javascript">
+			var map = L.map('mymap', {
+			center: [38.16, -96.96],
+            zoom: 4
+		});
+		
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+               maxZoom: 4,
+               minZoom: 4
+		}).addTo(map);
+			
+			var universityIcon = L.icon({
+				iconUrl: 'school.png', // url that links to the icon image file
+				iconSize:     [30, 30], // size of the icon image in pixels
+				iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+				popupAnchor:  [0, -10], // point from which the popup should open, relative to the iconAnchor
+			});
+			
+			var homeIcon = L.icon({
+				iconUrl: 'home.png', // url that links to the icon image file
+				iconSize:     [30, 30], // size of the icon image in pixels
+				iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+				popupAnchor:  [0, -10], // point from which the popup should open, relative to the iconAnchor
+			});
+			
+			var marker1 = L.marker([41.98,-87.72], {icon: universityIcon})
+		.addTo(map);
+			
+			var marker2 = L.marker([42.3986094,-86.2645595], {icon: universityIcon})
+		.addTo(map);
+		
+			var marker3 = L.marker([36.134775, -106.012580], {icon: homeIcon})
+		.addTo(map);
+		
+			var pic1 = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/NEIU_Sci.jpg/1024px-NEIU_Sci.jpg" alt="BBH" width="250">';
+			var pic2 = '<img src="https://i.imgur.com/j3qOLSI.jpeg" alt="Michigan Home" width="250">';
+			var pic3 = '<img src="https://i.imgur.com/qe5DDU0.jpeg" alt="Sisters Home" width="250">';
+
+		marker1.bindPopup('<p style="color:LightGoldenrodYellow; font-weight:bold"> Learn at NEIU </p>' + pic1);
+		marker2.bindPopup('<p style="color:seagreen; font-weight:bold"> Michigan Property </p>' + pic2);
+		marker3.bindPopup('<p style="color:red; font-weight:bold"> Sister Home </p>' + pic3);
+		
+		</script>
+	
+    </body>
+</html>
